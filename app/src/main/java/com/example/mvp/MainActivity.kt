@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity(),Controller.View {
 
     private lateinit var binding: ActivityMainBinding
     private val presenter = MainPresenter()
-    private val dao = PersonDao()
     private val adapter = MainAdapter(presenter::openCard)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +36,7 @@ class MainActivity : AppCompatActivity(),Controller.View {
 
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter.list = dao.data
+        adapter.list = presenter.getData()
 
     }
 
